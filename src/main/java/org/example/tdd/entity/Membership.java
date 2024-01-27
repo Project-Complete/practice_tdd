@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.tdd.repository.MembershipType;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -18,14 +19,15 @@ public class Membership {
     @Column()
     private String userId;
 
+    @Enumerated(EnumType.STRING)
     @Column()
-    private String membershipName;
+    private MembershipType membershipName;
 
     @Column()
     private Integer point;
 
     @Builder
-    public Membership(String userId, String membershipName, Integer point) {
+    public Membership(String userId, MembershipType membershipName, Integer point) {
         this.userId = userId;
         this.membershipName = membershipName;
         this.point = point;
