@@ -1,13 +1,12 @@
 package org.example.tdd.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.tdd.repository.MembershipType;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Getter
 @Entity
 public class Membership {
@@ -20,16 +19,15 @@ public class Membership {
     private String userId;
 
     @Enumerated(EnumType.STRING)
-    @Column()
-    private MembershipType membershipName;
+    private MembershipType membershipType;
 
     @Column()
     private Integer point;
 
     @Builder
-    public Membership(String userId, MembershipType membershipName, Integer point) {
+    public Membership(String userId, MembershipType membershipType, Integer point) {
         this.userId = userId;
-        this.membershipName = membershipName;
+        this.membershipType = membershipType;
         this.point = point;
     }
 }
